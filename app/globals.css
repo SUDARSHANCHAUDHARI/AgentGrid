@@ -1,0 +1,243 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --bg-accent: #0f2138;
+  --card: rgba(10, 22, 41, 0.72);
+  --line: rgba(149, 190, 255, 0.16);
+  --text: #eff6ff;
+  --muted: #9fb6d3;
+  --idle: #7dd3fc;
+  --running: #f59e0b;
+  --error: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(74, 222, 128, 0.08), transparent 24%),
+    radial-gradient(circle at right, rgba(96, 165, 250, 0.12), transparent 32%),
+    linear-gradient(180deg, #030711 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: "SF Pro Display", "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+.hero {
+  max-width: 720px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #7dd3fc;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 5.6rem);
+}
+
+.lede {
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.stats {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 32px 0;
+}
+
+.statCard,
+.form,
+.agentCard {
+  border: 1px solid var(--line);
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+}
+
+.statCard {
+  padding: 18px 20px;
+}
+
+.statCard span {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.statCard strong {
+  font-size: 2rem;
+}
+
+.form {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.form input {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.form button,
+.agentCard button {
+  border: none;
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.agentCard {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.agentCard::after {
+  content: "";
+  position: absolute;
+  inset: auto -40% -60% auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.26), transparent 70%);
+}
+
+.agentTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.agentTop h2 {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+}
+
+.agentTop p,
+.agentMeta,
+.activity {
+  margin: 0;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+}
+
+.badgeDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.activity {
+  margin: 18px 0;
+  line-height: 1.5;
+}
+
+.agentFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.agentCard.running {
+  transform: translateY(-4px);
+}
+
+.agentCard.running .badgeDot {
+  background: var(--running);
+  box-shadow: 0 0 0 10px rgba(245, 158, 11, 0.14);
+  animation: pulse 1.8s infinite;
+}
+
+.agentCard.idle .badgeDot {
+  background: var(--idle);
+}
+
+.agentCard.error .badgeDot {
+  background: var(--error);
+  animation: shake 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.28);
+  }
+
+  100% {
+    box-shadow: 0 0 0 18px rgba(245, 158, 11, 0);
+  }
+}
+
+@keyframes shake {
+  from {
+    transform: translateX(-2px);
+  }
+
+  to {
+    transform: translateX(2px);
+  }
+}
+
+@media (max-width: 720px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .agentFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
