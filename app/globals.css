@@ -3,6 +3,7 @@
   --bg: #07111f;
   --bg-accent: #0f2138;
   --card: rgba(10, 22, 41, 0.72);
+  --card-strong: rgba(13, 31, 54, 0.85);
   --line: rgba(149, 190, 255, 0.16);
   --text: #eff6ff;
   --muted: #9fb6d3;
@@ -33,13 +34,20 @@ input {
 }
 
 .shell {
-  width: min(1120px, calc(100% - 32px));
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 48px 0 80px;
+  padding: 40px 0 80px;
+}
+
+.heroBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  align-items: center;
 }
 
 .hero {
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .eyebrow {
@@ -52,31 +60,100 @@ input {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
 }
 
 .lede {
   margin: 16px 0 0;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 1.05rem;
+}
+
+.heroSide,
+.statCard,
+.form,
+.toolbar,
+.agentCard,
+.inspector {
+  border: 1px solid var(--line);
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+}
+
+.heroSide {
+  min-height: 220px;
+  padding: 20px;
+}
+
+.pulseMap {
+  position: relative;
+  height: 100%;
+  min-height: 180px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  overflow: hidden;
+}
+
+.pulseNode,
+.pulseLine {
+  position: absolute;
+}
+
+.pulseNode {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #7dd3fc;
+  box-shadow: 0 0 0 12px rgba(125, 211, 252, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.nodeA {
+  top: 22%;
+  left: 22%;
+}
+
+.nodeB {
+  top: 52%;
+  left: 58%;
+  background: #f59e0b;
+}
+
+.nodeC {
+  top: 70%;
+  left: 34%;
+  background: #fb7185;
+}
+
+.pulseLine {
+  height: 2px;
+  background: linear-gradient(90deg, rgba(125, 211, 252, 0.1), rgba(125, 211, 252, 0.8), rgba(125, 211, 252, 0.1));
+  transform-origin: left center;
+}
+
+.lineA {
+  top: 28%;
+  left: 28%;
+  width: 120px;
+  transform: rotate(26deg);
+}
+
+.lineB {
+  top: 58%;
+  left: 40%;
+  width: 86px;
+  transform: rotate(-24deg);
 }
 
 .stats {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 32px 0;
-}
-
-.statCard,
-.form,
-.agentCard {
-  border: 1px solid var(--line);
-  background: var(--card);
-  backdrop-filter: blur(16px);
-  border-radius: 24px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
+  margin: 28px 0 20px;
 }
 
 .statCard {
@@ -93,14 +170,28 @@ input {
   font-size: 2rem;
 }
 
-.form {
-  display: flex;
-  gap: 12px;
-  padding: 18px;
+.controlBar {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px;
   margin-bottom: 24px;
 }
 
-.form input {
+.form {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.formLabel {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.form input,
+.searchInput {
   flex: 1;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.04);
@@ -110,7 +201,8 @@ input {
 }
 
 .form button,
-.agentCard button {
+.agentCard button,
+.filterChip {
   border: none;
   border-radius: 16px;
   padding: 14px 18px;
@@ -119,16 +211,48 @@ input {
   cursor: pointer;
 }
 
+.toolbar {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filterChip {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+}
+
+.filterChip.active {
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) 360px;
+  gap: 22px;
+}
+
 .grid {
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-content: start;
 }
 
 .agentCard {
   padding: 20px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .agentCard::after {
@@ -139,6 +263,11 @@ input {
   height: 200px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(59, 130, 246, 0.26), transparent 70%);
+}
+
+.agentCard.selected {
+  border-color: rgba(125, 211, 252, 0.5);
+  box-shadow: 0 24px 60px rgba(37, 99, 235, 0.18);
 }
 
 .agentTop {
@@ -155,12 +284,15 @@ input {
 
 .agentTop p,
 .agentMeta,
-.activity {
+.activity,
+.inspectorHeader p,
+.inspectorActivity {
   margin: 0;
   color: var(--muted);
 }
 
-.badge {
+.badge,
+.statusBadge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -168,6 +300,7 @@ input {
   padding: 8px 12px;
   background: rgba(255, 255, 255, 0.05);
   font-size: 0.85rem;
+  text-transform: capitalize;
 }
 
 .badgeDot {
@@ -177,8 +310,50 @@ input {
 }
 
 .activity {
-  margin: 18px 0;
+  margin: 18px 0 16px;
   line-height: 1.5;
+}
+
+.metricRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metricPill,
+.inspectorMetric {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.metricPill span,
+.inspectorMetric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.metricPill strong,
+.inspectorMetric strong {
+  font-size: 0.95rem;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tag {
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  font-size: 0.78rem;
 }
 
 .agentFooter {
@@ -186,25 +361,124 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  margin-top: 18px;
 }
 
 .agentCard.running {
   transform: translateY(-4px);
 }
 
-.agentCard.running .badgeDot {
+.agentCard.running .badgeDot,
+.statusBadge.running::before {
   background: var(--running);
   box-shadow: 0 0 0 10px rgba(245, 158, 11, 0.14);
   animation: pulse 1.8s infinite;
 }
 
-.agentCard.idle .badgeDot {
+.agentCard.idle .badgeDot,
+.statusBadge.idle::before {
   background: var(--idle);
 }
 
-.agentCard.error .badgeDot {
+.agentCard.error .badgeDot,
+.statusBadge.error::before {
   background: var(--error);
   animation: shake 0.5s infinite alternate;
+}
+
+.inspector {
+  padding: 22px;
+  align-self: start;
+  background: var(--card-strong);
+}
+
+.inspector.empty {
+  display: grid;
+  gap: 12px;
+}
+
+.inspectorHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.inspectorHeader h2,
+.inspector h3 {
+  margin: 0;
+}
+
+.statusBadge::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.inspectorActivity {
+  margin: 14px 0 18px;
+  line-height: 1.6;
+}
+
+.inspectorSection {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.logs {
+  margin-top: 24px;
+}
+
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sectionTitleRow span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.logList {
+  display: grid;
+  gap: 10px;
+}
+
+.logItem {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.logMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.logItem p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.logItem.warn {
+  border-color: rgba(245, 158, 11, 0.22);
+}
+
+.logItem.error {
+  border-color: rgba(251, 113, 133, 0.28);
 }
 
 @keyframes pulse {
@@ -227,13 +501,18 @@ input {
   }
 }
 
-@media (max-width: 720px) {
-  .stats {
+@media (max-width: 980px) {
+  .heroBlock,
+  .controlBar,
+  .board {
     grid-template-columns: 1fr;
   }
+}
 
-  .form {
-    flex-direction: column;
+@media (max-width: 720px) {
+  .stats,
+  .metricRow {
+    grid-template-columns: 1fr;
   }
 
   .agentFooter {

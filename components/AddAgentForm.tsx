@@ -23,7 +23,11 @@ export function AddAgentForm({ onAdd }: AddAgentFormProps) {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
+      <label className="formLabel" htmlFor="agent-name">
+        New agent
+      </label>
       <input
+        id="agent-name"
         aria-label="Agent name"
         placeholder="Add a new agent"
         value={name}
