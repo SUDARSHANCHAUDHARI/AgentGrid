@@ -1,25 +1,53 @@
 # AgentGrid
 
-AgentGrid is the control-room starter in the Living Interfaces suite.
+AgentGrid is a standalone control-room prototype for AI agents.
 
-## MVP
+## What It Is
 
-- Add mock agents locally
-- Cycle agent states between `idle`, `running`, and `error`
-- View lightweight activity details
-- Explore the product direction without backend setup
+AgentGrid explores a visual-first way to monitor agent systems:
 
-## Run
+- status-aware agent cards
+- queue depth and latency signals
+- log-focused inspection workflow
+- search and filter controls for quick triage
+
+## Current Features
+
+- add local mock agents
+- cycle agents between `idle`, `running`, and `error`
+- inspect heartbeat, region, tags, and recent logs
+- filter by status and search by team, tags, or region
+
+## Stack
+
+- Next.js
+- React
+- TypeScript
+- pnpm
+
+## Run Locally
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open `http://localhost:3000`.
 
+## Deployment
+
+Recommended first deployment target:
+
+- Vercel
+
+Suggested environment:
+
+- standalone project
+- one deployment per repo
+- production branch: `main`
+
 ## Next Steps
 
-- Add live transport with websockets
-- Add topology lines between agents
-- Add richer motion and observability views
+- add live transport with websockets
+- add topology lines between agents
+- add richer alerting and incident views
