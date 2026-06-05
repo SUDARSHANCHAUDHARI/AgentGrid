@@ -2,9 +2,20 @@ node_modules
 .next
 dist
 build
+out
 .DS_Store
+tsconfig.tsbuildinfo
 *.log
 .env
 .env.*
 !.env.example
 .vercel
+
+# graphify knowledge graph
+graphify-out/
+
+# Local AI task notes
+CLAUDE_TASKS.md
+
+# Local Claude/Codex worktrees
+.claude/worktrees/
