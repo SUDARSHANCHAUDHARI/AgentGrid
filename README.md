@@ -36,6 +36,8 @@ Open `http://localhost:3000`.
 
 ## Deployment
 
+Release scope: public demo. The current version uses local mock agents and is intended to show the control-room workflow before live agent transport is added.
+
 Recommended first deployment target:
 
 - Vercel
