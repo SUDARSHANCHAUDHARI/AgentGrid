@@ -5,6 +5,7 @@ import { AddAgentForm } from "../components/AddAgentForm";
 import { AgentCard } from "../components/AgentCard";
 import { AgentInspector } from "../components/AgentInspector";
 import { starterAgents, type AgentRecord, type AgentStatus } from "../lib/starter-data";
+import { filterAgents } from "../lib/filterAgents";
 
 const statusFilters: Array<{ label: string; value: AgentStatus | "all" }> = [
   { label: "All", value: "all" },
@@ -29,21 +30,10 @@ export default function HomePage() {
     );
   }, [agents]);
 
-  const filteredAgents = useMemo(() => {
-    return agents.filter((agent) => {
-      const matchesFilter = filter === "all" ? true : agent.status === filter;
-      const query = search.trim().toLowerCase();
-      const matchesSearch =
-        query.length === 0
-          ? true
-          : [agent.name, agent.owner, agent.region, ...agent.tags]
-              .join(" ")
-              .toLowerCase()
-              .includes(query);
-
-      return matchesFilter && matchesSearch;
-    });
-  }, [agents, filter, search]);
+  const filteredAgents = useMemo(
+    () => filterAgents(agents, filter, search),
+    [agents, filter, search]
+  );
 
   const selectedAgent =
     agents.find((agent) => agent.id === selectedAgentId) ?? filteredAgents[0] ?? null;
