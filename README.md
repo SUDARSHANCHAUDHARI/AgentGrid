@@ -40,7 +40,7 @@ Release scope: public demo. The current version uses local mock agents and is in
 
 Recommended first deployment target:
 
-- Vercel
+- Your own domain (existing portfolio hosting — any Next-capable host)
 
 Suggested environment:
 

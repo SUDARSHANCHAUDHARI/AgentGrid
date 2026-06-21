@@ -40,4 +40,36 @@ This is a **prototype, not a product.** Real product would need:
 
 ## Deployment
 
-Not yet deployed. Zero-config Vercel deploy possible — but deploying a prototype doesn't change that it's a prototype.
+Not yet deployed. Self-hosted on your own domain when ready — but deploying a prototype doesn't change that it's a prototype.
+
+## File-by-file checklist
+
+### App shell
+- [x] `app/layout.tsx` — root layout
+- [x] `app/page.tsx` — control-room UI (uses extracted `filterAgents` helper)
+- [x] `app/globals.css` — base styles
+
+### Components
+- [x] `components/AddAgentForm.tsx` — local-only agent creation
+- [x] `components/AgentCard.tsx` — status-aware card with cycle action
+- [x] `components/AgentInspector.tsx` — heartbeat / region / tags / logs panel
+
+### Lib
+- [x] `lib/starter-data.ts` — mock agent + log shapes and seed data
+- [x] `lib/filterAgents.ts` — pure filter+search helper (extracted)
+
+### Tests
+- [x] `lib/filterAgents.test.ts` — 7 tests (filter, search, AND, order)
+
+### Quality + scaffolding
+- [x] ESLint flat-compatible config (`.eslintrc.json`, next/core-web-vitals)
+- [x] `typecheck` + `test` scripts
+- [x] Build + lint + typecheck green
+
+### Not done (product gaps — need spec)
+- [ ] Real agent integration (currently mock data only)
+- [ ] Persistence (refresh wipes state)
+- [ ] Real-time updates (no websocket / SSE / polling)
+- [ ] Auth + multi-user
+- [ ] Real status-cycle (currently rotates through canned activity strings)
+- [ ] Product spec answering: which agent platforms does it integrate with? Which user actions matter (kill / restart / reroute)?

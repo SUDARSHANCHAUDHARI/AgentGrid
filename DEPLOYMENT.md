@@ -2,7 +2,7 @@
 
 ## Target
 
-- Recommended first host: Vercel
+- Host: your own domain (the same hosting flow you use for the rest of the portfolio — VPS, container host, or any Next-capable platform)
 - Repo: standalone deployment
 - Branch: `main`
 
@@ -16,14 +16,14 @@
 ## Environment Variables
 
 - copy `.env.example` to `.env` locally if needed
-- add production variables in the hosting dashboard
+- add production variables to your host's environment / secret store
 
 ## First Deployment
 
-1. Import the GitHub repo into Vercel
-2. Keep framework detection as Next.js
-3. Keep install command as `pnpm install`
-4. Keep build command as `pnpm build`
+1. Point your host at the GitHub repo (or push the build output to your server)
+2. Configure as a Next.js (App Router) app
+3. Install command: `pnpm install`
+4. Build command: `pnpm build`
 5. Deploy from `main`
 
 ## Post-Deploy
