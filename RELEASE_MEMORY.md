@@ -3,7 +3,7 @@ _Last updated: 2026-06-04_
 
 ## Current Status
 
-AgentGrid is a static Next.js prototype for monitoring AI agents. It uses local/mock agent data and has Vercel deployment notes.
+AgentGrid is a static Next.js prototype for monitoring AI agents. It uses local/mock agent data and is set up to deploy to your own domain via the existing portfolio hosting flow.
 
 Known verification: `pnpm build` and `pnpm exec tsc --noEmit` passed on 2026-06-04.
 
@@ -24,7 +24,7 @@ Public demo release, not a full production product yet.
 1. Run `pnpm build`.
 2. Review UI copy and make prototype language honest.
 3. Verify cards, search, filter, status cycling, and inspector behavior.
-4. Deploy as a Vercel demo.
+4. Deploy as a demo on your own domain.
 5. Add live URL to README.
 6. Plan v2 live transport and topology work separately.
 

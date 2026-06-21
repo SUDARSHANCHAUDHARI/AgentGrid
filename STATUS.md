@@ -40,4 +40,4 @@ This is a **prototype, not a product.** Real product would need:
 
 ## Deployment
 
-Not yet deployed. Zero-config Vercel deploy possible — but deploying a prototype doesn't change that it's a prototype.
+Not yet deployed. Self-hosted on your own domain when ready — but deploying a prototype doesn't change that it's a prototype.
