@@ -1,5 +1,10 @@
 # AgentGrid
 
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 AgentGrid is a standalone control-room prototype for AI agents.
 
 ## What It Is
@@ -53,3 +58,11 @@ Suggested environment:
 - add live transport with websockets
 - add topology lines between agents
 - add richer alerting and incident views
+
+## Author
+
+Built by **Sudarshan Chaudhari** — SudarshanTechLabs.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
