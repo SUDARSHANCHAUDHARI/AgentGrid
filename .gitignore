@@ -19,3 +19,5 @@ CLAUDE_TASKS.md
 
 # Local Claude/Codex worktrees
 .claude/worktrees/
+
+repoguard-results/
